@@ -1,0 +1,38 @@
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+  .content {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.search__picture {
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 576px;
+  background-image: url(../../images/main_picture_1.png);
+  background-size: cover;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+  .search__picture {
+    height: 470px;
+  }
+}
+
+@media all and (max-width: 417px) {
+  .search__picture {
+    height: 536px;
+  }
+}

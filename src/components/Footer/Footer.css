@@ -1,0 +1,158 @@
+/* Block */
+.footer {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media all and (max-width: 750px) {
+  .footer {
+    flex-direction: column;
+  }
+}
+
+/* © 2020 Supersite, Powered by News API */
+.footer__copyright {
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  font-size: 16px;
+  line-height: 22px;
+  color: #B6BCBF;
+  margin-top: 30px;
+  margin-bottom: 28px;
+  margin-left: 104px;
+  display: flex;
+  align-self: center;
+}
+
+@media all and (max-width: 1200px) {
+  .footer__copyright {
+    margin-left: 40px
+  }
+}
+
+@media all and (max-width: 750px) {
+  .footer__copyright {
+    order: 3;
+    margin: 10px 0 22px 40px;
+    align-self: flex-start;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .footer__copyright {
+    margin-left: 16px;
+  }
+}
+
+.footer__links {
+  margin: 30px 104px 28px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+@media all and (max-width: 1200px) {
+  .footer__links {
+    margin-right: 40px;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .footer__links {
+    margin-right: 0;
+    margin-left: 40px;
+    margin-bottom: 0;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .footer__links {
+    margin-left: 16px;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .footer__links {
+    padding-left: 0px;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-bottom: 18px;
+  }
+}
+
+.footer__nav-links {
+  display: flex;
+  padding-left: 0;
+  flex-direction: row;
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media all and (max-width: 360px) {
+  .footer__nav-links {
+    line-height: 48px;
+    flex-direction: column;
+  }
+}
+
+.footer__nav-link {
+  text-decoration: none;
+  margin-right: 40px;
+  transition: opacity .5s;
+  color: black;
+}
+
+@media all and (max-width: 790px) {
+  .footer__nav-link {
+    margin-right: 16px;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .footer__nav-link {
+    margin-left: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+.footer__nav-link_social {
+  display: flex;
+  padding-left: 0;
+}
+
+@media all and (max-width: 360px) {
+  .footer__nav-link_social {
+    padding-top: 12px;
+
+  }
+}
+
+.footer__social-media_git {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../images/github_logo.svg);
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.footer__social-media_facebook {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../images/facebook_logo.svg);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  margin-left: 24px;
+}
