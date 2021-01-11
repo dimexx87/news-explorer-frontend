@@ -21,7 +21,6 @@
 
 @media all and (max-width: 320px) {
   .search__titles {
-    margin-left: 19px;
     max-width: 285px;
   }
 }

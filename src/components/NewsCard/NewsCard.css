@@ -19,15 +19,21 @@
   }
 }
 
-@media all and (max-width: 515px) {
+@media all and (max-width: 757px) {
   .newscard {
-    height: 520px
+    height: 470px
   }
 }
 
-@media all and (max-width: 452px) {
+@media all and (max-width: 700px) {
   .newscard {
-    height: 500px
+    height: 440px
+  }
+}
+
+@media all and (max-width: 531px) {
+  .newscard {
+    height: 520px
   }
 }
 
@@ -170,9 +176,9 @@
   margin-bottom: 16px;
   margin-top: 0;
   display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 @media all and (max-width: 768px) {
@@ -200,13 +206,6 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;  
   overflow: hidden;
-  }
-}
-
-@media all and (max-width: 741px) {
-  .newscard__subtitle { 
-    height: 60px;
-    text-overflow: clip;
   }
 }
 
