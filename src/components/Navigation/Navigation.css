@@ -1,0 +1,231 @@
+.header__navigation {
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin-right: 104px;
+  margin-bottom: 23px;
+  margin-top: 30px;
+}
+
+@media all and (max-width: 1200px) {
+  .header__navigation {
+    margin-right: 40px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .header__navigation {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .header__navigation {
+    margin-top: 16px;
+    align-items: flex-start
+  }
+}
+
+.header__navigation-small {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 88px;
+}
+
+@media all and (max-width: 768px) {
+  .header__navigation-small {
+    margin-top: 72px;
+    margin-left: 40px;
+    padding-left: 0;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .header__navigation-small {
+    margin-left: 16px;
+  }
+}
+
+.header__nav-button {
+  width: 24px;
+  height: 24px;
+  background-image: url(../../images/menu.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  display: none;
+  outline: none
+}
+
+.header__nav-button_black {
+  background-image: url(../../images/menu_black.svg);
+}
+
+.header__nav-button-close {
+  background-image: url(../../images/close.svg);
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
+
+@media all and (max-width: 450px) {
+  .header__nav-button-close {
+    right: 16px; 
+  }
+}
+
+@media all and (max-width: 320px) {
+  .header__nav-button-close {
+    top: 16px; 
+  }
+}
+
+@media all and (max-width: 750px) {
+  .header__nav-button {
+    display: block; 
+  }
+}
+
+.header__nav-link {
+  text-decoration: none;
+  margin-right: 34px;
+  transition: opacity .5s;
+  color: white;
+  padding-bottom: 28px;
+}
+
+@media all and (max-width: 750px) {
+  .header__nav-link {
+    display: none; 
+  }
+}
+
+.header__nav-link-small {
+  display: flex;
+}
+
+.header__nav-link_aсtive {
+  border-bottom: 3px solid white;
+}
+
+.header__nav-link:hover {
+  opacity: .8;
+  cursor: url(../../images/Pointer.svg), pointer; 
+}
+
+.header__log-link {
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  font-size: 18px;
+  line-height: 24px;
+  color: white;
+  transition: opacity .5s;
+  outline: none;
+  margin: 8px 12px;
+}
+
+@media all and (max-width: 750px) {
+  .header__log-link {
+    display: none; 
+  }
+}
+
+@media all and (max-width: 768px) {
+  .header__log-link {
+    font-size: 16px;
+  }
+}
+
+.header__log-link:hover {
+  opacity: .8;
+  cursor: url(../../images/Pointer.svg), pointer; 
+}
+
+.header__log-link-small {
+  display: flex;
+}
+
+.header__nav-link:nth-last-of-type(2) {
+  margin-right: 32px;
+}
+
+
+.header__log-button {
+  border-radius: 100px;
+  border: 1px solid#D1D2D6;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 750px) {
+  .header__log-button {
+    display: none;
+    border: none;
+  }
+}
+
+.header__log-button-small {
+  display: flex;
+  border: 1px solid white;
+}
+
+@media all and (max-width: 320px) {
+  .header__log-button-small {
+    width: 288px;
+    padding: 8px 0;
+  }
+}
+
+.header__nav-link_black {
+  color: black;
+  border: none
+}
+
+.header__log-link_black {
+  margin: 8px 6px 8px 15px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  font-size: 18px;
+  line-height: 24px;
+  color: black;
+}
+
+@media all and (max-width: 750px) {
+  .header__log-link_black {
+    display: none;
+  }
+}
+
+.header__log-link_logout {
+  background-image: url(../../images/logout.svg);
+  background-repeat: no-repeat;
+  width: 17.41px;
+  height: 16px;
+  margin: 0 15px 0 0px;
+}
+
+.header__log-link_logout_white {
+  background-image: url(../../images/logout_white.svg);
+}
+
+.header__nav-link_aсtive_black {
+  border-bottom: 3px solid black;
+}

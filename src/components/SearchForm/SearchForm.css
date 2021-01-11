@@ -1,0 +1,127 @@
+.search__form {
+  background-color:white;
+  margin: 64px auto 0;
+  width: 608px;
+  height: 64px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+  margin-bottom: 65px;
+}
+
+@media all and (max-width: 768px) {
+  .search__form {
+    width: 448px;
+    height: 56px;
+    margin-bottom: 73px;
+  }
+}
+
+@media all and (max-width: 550px) {
+  .search__form {
+    margin: 64px 40px 80px;
+    width: auto;
+  }
+}
+
+@media all and (max-width: 462px) {
+  .search__form {
+    margin: 64px 40px 55px;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .search__form {
+    margin-left: 16px;
+  }
+}
+
+@media all and (max-width: 417px) {
+  .search__form {
+    flex-direction: column;
+    width: auto;
+    margin: 90px auto 80px;
+  }
+}
+
+@media all and (max-width: 324px) {
+  .search__form {
+    margin: 70px auto 80px;
+  }
+}
+
+.search__input {
+  width: 70%;
+  border: none;
+  margin: 21px 0 21px 24px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  font-size: 16px;
+  line-height: 22px;
+  outline-offset: 5px;
+  outline-color: #C8D3E7;
+}
+
+@media all and (max-width: 768px) {
+  .search__input {
+    width: 65%;
+    margin: 17px 0 17px 16px;
+  }
+}
+
+@media all and (max-width: 417px) {
+  .search__input {
+    width: 87%;
+  }
+}
+
+.search__button {
+  width: 29.5%;
+  height: 64px;
+  border-radius: 100px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  color:white;
+  font-size: 18px;
+  line-height: 24px;
+  background-color: rgba(47, 113, 229, 1);
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media all and (max-width: 768px) {
+  .search__button {
+    width:35%;
+    height: 56px;
+  }
+}
+
+@media all and (max-width: 417px) {
+  .search__button {
+    width: 288px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    margin-top: 16px;
+    margin-left: 0;
+  }
+}
+
+.search__button:hover {
+  cursor: url(../../images/Pointer.svg), pointer;
+  background-color: rgba(52, 126, 255, 1);
+}
+
+.search__button:active {
+  cursor: url(../../images/Pointer.svg), pointer;
+  background-color: rgba(42, 101, 204, 1);
+}

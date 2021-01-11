@@ -1,0 +1,24 @@
+.newscardlist {
+  max-width: 1440px;
+  margin: 64px 104px;
+  display: grid;
+  grid-gap: 16px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+@media all and (max-width: 768px) {
+  .newscardlist {
+    margin: 32px 40px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr))
+  }
+}
+
+@media all and (max-width: 450px) {
+  .newscardlist {
+    margin: 32px 16px;
+  }
+}
+
+.newscardlist__main {
+  margin-top: 0;
+}
