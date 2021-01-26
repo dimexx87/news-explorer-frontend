@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './Header.css';
 import '../../vendor/fonts/fonts.css';
 import Navigation from '../Navigation/Navigation';
@@ -41,9 +42,10 @@ function Header({ isMain, ...rest }) {
 
   return (
     <main className='content'>
-      {
-        isMain
-          ? <header className={
+      {/* Main */}
+      <Switch>
+        <Route exact path="/">
+          <header className={
             isMenu
               ? 'header header__popup header__popup_opened'
               : 'header'}>
@@ -59,41 +61,51 @@ function Header({ isMain, ...rest }) {
             </a>
             <Navigation
               onLogin={rest.onLogin}
+              onRegister={rest.onRegister}
               onNoMain={rest.onNoMain}
               onMain={rest.onMain}
               onMenu={handleMenu}
               onCloseMenu={closeMenu}
               isMenu={isMenu}
               isMain={isMain}
+              loggedIn={rest.loggedIn}
+              logOut={rest.logOut}
             />
           </header>
-          : <>
-            <header className={
-              isMenu
-                ? 'header header__popup header__popup_opened'
-                : 'header'}>
-              <a
-                href="/"
-                className={
-                  isMenu
-                    ? 'header__logo header__logo_menu'
-                    : 'header__logo header__logo_black'
-                }
-              >
-                NewsExplorer
+        </Route>
+      </Switch>
+      {/* SavedNews */}
+      <Switch>
+        <Route path="/saved-news">
+          <header className={
+            isMenu
+              ? 'header header__popup header__popup_opened'
+              : 'header'}>
+            <a
+              href="/"
+              className={
+                isMenu
+                  ? 'header__logo header__logo_menu'
+                  : 'header__logo header__logo_black'
+              }
+            >
+              NewsExplorer
             </a>
-              <Navigation
-                onLogin={rest.onLogin}
-                onNoMain={rest.onNoMain}
-                onMain={rest.onMain}
-                onMenu={handleMenu}
-                onCloseMenu={closeMenu}
-                isMenu={isMenu}
-              />
-            </header>
-            <SavedNewsHeader />
-          </>
-      }
+            <Navigation
+              onLogin={rest.onLogin}
+              onRegister={rest.Register}
+              onNoMain={rest.onNoMain}
+              onMain={rest.onMain}
+              onMenu={handleMenu}
+              onCloseMenu={closeMenu}
+              isMenu={isMenu}
+              loggedIn={rest.loggedIn}
+              logOut={rest.logOut}
+            />
+          </header>
+          <SavedNewsHeader />
+        </Route>
+      </Switch>
     </main>
   );
 }

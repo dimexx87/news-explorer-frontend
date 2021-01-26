@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import './Register.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import { register } from '../../utils/auth';
 
 function Register(props) {
   const initialValues = {
@@ -10,13 +12,19 @@ function Register(props) {
     password: '',
     name: '',
   };
-
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState(false);
+  const history = useHistory();
   const onSubmit = (values) => {
     const { email, password, name } = values;
-    props.onAddPlace({
-      email,
-      password,
-      name,
+    register(email, password, name).then((res) => {
+      if (res.status !== 400) {
+        props.handleInfoTooltip(true);
+        history.push('/info');
+      } else {
+        setMessage('Такой пользователь уже существует');
+        setError(true);
+      }
     });
   };
 
@@ -25,7 +33,7 @@ function Register(props) {
       .required('Необходимо заполнить')
       .email('Неправильный формат электронной почты')
       .min(2, 'Должно содержать минимум 2 символа')
-      .max(15, 'Должно содержать максимум 15 символов'),
+      .max(20, 'Должно содержать максимум 20 символов'),
     password: Yup.string()
       .required('Необходимо заполнить')
       .min(8, 'Должно содержать минимум 8 символов'),
@@ -41,19 +49,21 @@ function Register(props) {
   });
 
   React.useEffect(() => {
+    formik.isValid = false;
     formik.values.email = '';
     formik.values.password = '';
     formik.values.name = '';
     formik.touched.email = false;
     formik.touched.password = false;
     formik.touched.name = false;
-    formik.isValid = true;
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [props.isOpen]);
 
   return (
     <PopupWithForm
+      onLogin={props.onLogin}
       isOpen={props.isOpen}
+      isRegOpen={props.isRegOpen}
       onClose={props.onClose}
       onSubmit={formik.handleSubmit}
       onRegister={props.onRegister}
@@ -62,7 +72,10 @@ function Register(props) {
       title={'Регистрация'}
       buttonText={'Зарегистрироваться'}
       spanText={'Войти'}
-      disabled={!formik.isValid}
+      disabled={!(formik.dirty && formik.isValid)}
+      error={error}
+      message={message}
+      isInfoTooltipPopupOpen={props.isInfoTooltipPopupOpen}
     >
       {
         <>

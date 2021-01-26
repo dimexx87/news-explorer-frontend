@@ -1,0 +1,12 @@
+.searcherror__title {
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  color:#B6BCBF;
+  font-size: 18px;
+  line-height: 24px;
+  max-width: 356px;
+  text-align:center;
+  margin: 80px auto 80px;
+}

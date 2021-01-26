@@ -1,0 +1,27 @@
+.noresult__image {
+  margin: 80px auto 24px;
+}
+
+.noresult__title {
+  font-family: "Roboto Slab", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  color:#1A1B22;
+  font-size: 26px;
+  line-height: 30px;
+  margin: 0 auto 16px;
+}
+
+.noresult__subtitle {
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  color:#B6BCBF;
+  font-size: 18px;
+  line-height: 24px;
+  max-width: 356px;
+  text-align:center;
+  margin: 0 auto 80px;
+}

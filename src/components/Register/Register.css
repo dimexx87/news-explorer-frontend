@@ -38,6 +38,14 @@
   font-size: 14px;
 }
 
+.popup__subtitle_info {
+  margin-top: 14px;
+  text-align:left;
+  text-align:start;
+  align-items: start;
+  align-self: flex-start;
+}
+
 .popup__text:focus {
   outline-color: rgba(0, 0, 0, 0.1);
   color: black;
@@ -58,6 +66,10 @@
   background-color: transparent;
 }
 
+.popup__switch_info {
+  margin: 14px 0 28px 36px;
+}
+
 .popup__input-error {
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
@@ -65,6 +77,30 @@
   font-display: swap;
   font-size: 12px;
   color: red;
+}
+
+.popup__input-error_search {
+  position: relative;
+  top: 10px;
+
+
+}
+
+.popup__submit-error {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  color: red;
+  font-size: 12px;
+  margin-bottom: 8px;
+  margin-top: 39px;
+  align-self: center;
+  visibility:hidden;
+}
+
+.popup__submit-error_active {
+  visibility:visible;
 }
 
 @media all and (max-width: 3210px) {
