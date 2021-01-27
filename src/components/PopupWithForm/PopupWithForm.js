@@ -37,7 +37,7 @@ function PopupWithForm({
                 buttonText
                   ? <button
                     onClick={onSubmit}
-                    type="button"
+                    type="submit"
                     className=
                     {
                       rest.disabled

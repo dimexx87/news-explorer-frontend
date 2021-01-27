@@ -6,8 +6,8 @@ import NoResult from '../NoResult/NoResult';
 function SavedNews(props) {
   return (
     <main className="content">
-      {props.searchStatus === 'noresults' && <NoResult />}
-      {props.searchStatus === 'results'
+      {props.savedNewsStatus === 'noresults' && <NoResult />}
+      {props.savedNewsStatus === 'results'
         && <SearchResults
           isSearch={props.isSearch}
           isMain={props.isMain}
@@ -17,6 +17,8 @@ function SavedNews(props) {
           setSearchStatus={props.setSearchStatus}
           setSavedNews={props.setSavedNews}
           onDelete={props.onDelete}
+          searchedNewsFull={props.searchedNewsFull}
+          newsCards={props.newsCards}
         />
       }
       <About

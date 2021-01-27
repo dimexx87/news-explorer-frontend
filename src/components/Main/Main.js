@@ -28,6 +28,8 @@ function Main(props) {
           onSave={props.onSave}
           onUnSave={props.onUnSave}
           onDelete={props.onDelete}
+          onRegister={props.onRegister}
+          searchedNewsFull={props.searchedNewsFull}
         />
       }
       <About />

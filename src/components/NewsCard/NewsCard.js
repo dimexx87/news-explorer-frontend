@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState, useCallback } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import './NewsCard.css';
 
 function NewsCard(props) {
@@ -10,6 +10,7 @@ function NewsCard(props) {
   const handleDelete = () => props.onDelete(props);
   const handleSave = () => props.onSave(props);
   const handleUnSave = () => props.onUnSave(props);
+  const history = useHistory();
 
   const formatDate = useCallback((value) => {
     const newDate = new Date(value);
@@ -56,6 +57,7 @@ function NewsCard(props) {
                   className='newscard__save-button'
                   onMouseEnter={handleSaveTooltip}
                   onMouseLeave={unHandleSaveTooltip}
+                  onClick={props.onRegister}
                   type="button"
                 ></button>
             }

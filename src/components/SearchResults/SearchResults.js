@@ -2,15 +2,12 @@ import React, { useRef, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './SearchResults.css';
 import NewsCardList from '../NewsCardList/NewsCardList';
-import { getNews, getToken } from '../../utils/token';
-import apiMain from '../../utils/MainApi';
 
 function SearchResults(props) {
-  const cards = getNews() === null ? '' : getNews();
   const counter = useRef(3);
   const showMoreSearchedNews = () => {
     counter.current += 3;
-    props.setSearchedCards(cards.slice(0, counter.current));
+    props.setSearchedCards(props.searchedNewsFull.slice(0, counter.current));
   };
 
   return (
@@ -26,9 +23,10 @@ function SearchResults(props) {
               onDelete={props.onDelete}
               onSave={props.onSave}
               onUnSave={props.onUnSave}
+              onRegister={props.onRegister}
             />
             {
-              cards.length > 3 && counter.current < cards.length
+              props.searchedNewsFull.length >= 3 && counter.current < props.searchedNewsFull.length
                 ? <button onClick={showMoreSearchedNews} className='searchresults__button'>Показать еще</button>
                 : null
             }

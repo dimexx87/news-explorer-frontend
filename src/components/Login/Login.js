@@ -15,7 +15,7 @@ function Login(props) {
     password: '',
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitProps) => {
     const { email, password } = values;
     if (!email || !password) {
       return;
@@ -25,11 +25,13 @@ function Login(props) {
         if (!data) {
           setMessage('Проверьте адрес электронной почты и пароль');
           setError(true);
+          onSubmitProps.setSubmitting(false);
         }
         if (data.token) {
           setToken(data.token);
           props.onLogged(true);
           history.push('/');
+          onSubmitProps.setSubmitting(false);
         }
       })
       // eslint-disable-next-line no-console
@@ -74,7 +76,7 @@ function Login(props) {
       title={'Вход'}
       buttonText={'Войти'}
       spanText={'Зарегистрироваться'}
-      disabled={!(formik.dirty && formik.isValid)}
+      disabled={!(formik.dirty && formik.isValid) || formik.isSubmitting}
       error={error}
       message={message}
     >

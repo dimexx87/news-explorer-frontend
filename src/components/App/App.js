@@ -15,6 +15,7 @@ import CurrentUserContext from '../../context/CurrentUserContext';
 import apiMain from '../../utils/MainApi';
 import { getToken, removeToken, setNews, getNews } from '../../utils/token';
 import { getContent } from '../../utils/auth';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -24,8 +25,10 @@ function App() {
   const [isMainPageOpened, setIsMainPageOpened] = useState(true);
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
   const [searchedNews, setSearchedNews] = useState([]);
+  const [searchedNewsFull, setSearchedNewsFull] = useState([]);
   const [savedNews, setSavedNews] = useState([]);
   const [searchStatus, setSearchStatus] = useState('');
+  const [savedNewsStatus, setSavedNewsStatus] = useState('');
   const history = useHistory();
 
   useEffect(() => {
@@ -48,10 +51,11 @@ function App() {
     const newsCheck = () => {
       const cards = getNews();
       if (cards === null) {
-        setSearchStatus('')
+        // setSearchStatus('')
         return
       }
       setSearchStatus('results');
+      setSearchedNewsFull(cards);
       setSearchedCards(cards.slice(0, 3));
     }
 
@@ -63,7 +67,8 @@ function App() {
       apiMain.getArticles(jwt)
         .then((response) => {
           if (response.length === 0) {
-            setSearchStatus('');
+            setSavedNewsStatus('');
+            return
           }
           const savedCards = response.map((item) => ({
             _id: item._id,
@@ -77,8 +82,10 @@ function App() {
             image: item.image ? item.image : '',
             isSaved: true,
           }));
+          setSavedNewsStatus('results');
           setSavedNews(savedCards);
-        });
+        })
+        .catch((err) => console.log(`Получение статей: ${err}`))
     }
     tokenCheck();
     newsCheck();
@@ -99,6 +106,7 @@ function App() {
   };
 
   const handleRegisterClick = () => {
+    history.push('/sign-up');
     setIsRegisterPopupOpen(true);
   };
   const handleLoginClick = () => {
@@ -130,10 +138,13 @@ function App() {
           isSaved: false,
         }));
         setSearchedCards(cards.slice(0, 3));
+        setSearchedNewsFull(cards);
         setNews(cards);
-
       })
-      .catch((err) => setSearchStatus('searcherror'));
+      .catch((err) => {
+        console.log(`Поиск статей: ${err}`);
+        setSearchStatus('searcherror')
+      });
   };
   const handleNoMainPage = (e) => {
     setIsMainPageOpened(false);
@@ -204,6 +215,7 @@ function App() {
         setSearchedNews(updatedArticle);
         setNews(updatedArticle);
       })
+      .catch((err) => console.log(`Сохранение статьи: ${err}`))
   }
 
   const unSaveArticles = (article) => {
@@ -227,11 +239,11 @@ function App() {
         setSearchedNews(updatedArticle);
         setNews(updatedArticle);
       })
+      .catch((err) => console.log(`Убрать статью из сохраненных: ${err}`))
   }
 
   return (
     <Switch>
-
       {/* unprotected rout to Register */}
       <Route path="/sign-up">
         <Register
@@ -306,12 +318,14 @@ function App() {
             onSearch={handleSearch}
             isMain={isMainPageOpened}
             newsCards={searchedNews}
+            searchedNewsFull={searchedNewsFull}
             setSearchedCards={setSearchedCards}
             searchStatus={searchStatus}
             loggedIn={loggedIn}
             onSave={saveArticles}
             onUnSave={unSaveArticles}
             onDelete={deleteArticle}
+            onRegister={handleRegisterClick}
           />
           <Footer
             onMain={handleMainPage}
@@ -339,15 +353,16 @@ function App() {
             setSavedNews={setSavedNews}
             onDelete={deleteArticle}
             onSave={saveArticles}
-            searchStatus={searchStatus}
+            savedNewsStatus={savedNewsStatus}
+            searchedNewsFull={searchedNewsFull}
           />
           <Footer
             onMain={handleMainPage}
           />
         </Route>
       </CurrentUserContext.Provider>
-      <Route exact path="/saved-news">
-        {loggedIn ? <Redirect to="/saved-news" /> : <Redirect to="/" />}
+      <Route path="*">
+        <Redirect to="/" />
       </Route>
     </Switch>
   );

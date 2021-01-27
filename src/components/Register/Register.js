@@ -15,15 +15,17 @@ function Register(props) {
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
   const history = useHistory();
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitProps) => {
     const { email, password, name } = values;
     register(email, password, name).then((res) => {
       if (res.status !== 400) {
+        onSubmitProps.setSubmitting(false);
         props.handleInfoTooltip(true);
         history.push('/info');
       } else {
         setMessage('Такой пользователь уже существует');
         setError(true);
+        onSubmitProps.setSubmitting(false);
       }
     });
   };
@@ -72,7 +74,7 @@ function Register(props) {
       title={'Регистрация'}
       buttonText={'Зарегистрироваться'}
       spanText={'Войти'}
-      disabled={!(formik.dirty && formik.isValid)}
+      disabled={!(formik.dirty && formik.isValid) || formik.isSubmitting}
       error={error}
       message={message}
       isInfoTooltipPopupOpen={props.isInfoTooltipPopupOpen}

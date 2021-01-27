@@ -16,6 +16,7 @@ function NewsCardList({ newsCards, ...rest }) {
             onDelete={rest.onDelete}
             onSave={rest.onSave}
             onUnSave={rest.onUnSave}
+            onRegister={rest.onRegister}
           />
         ))}
     </section>

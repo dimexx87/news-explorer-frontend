@@ -25,19 +25,20 @@ function SearchForm(props) {
   return (
     <>
       <form className="search__form">
-        <input
-          placeholder={placeholder}
-          className="search__input"
-          type='text'
-          name='request'
-          value={request}
-          onChange={handleChange}
-        />
+          <input
+            placeholder={placeholder}
+            className="search__input"
+            type='text'
+            name='request'
+            value={request}
+            onChange={handleChange}
+          />
         <button
-          type="button"
+          type="submit"
           className="search__button"
           onClick={handleSubmit}
         >Искать</button>
+
       </form>
     </>
   );
