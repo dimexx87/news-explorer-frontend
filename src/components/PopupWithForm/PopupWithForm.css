@@ -10,7 +10,7 @@
   left: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 2;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -83,7 +83,7 @@
 .popup__btn-submit {
   background-color: #2F71E5;
   height: 64px;
-  margin: 48px 35px 16px;
+  margin: 0 35px 16px;
   border-radius: 100px;
   font-family: "Roboto", Arial, sans-serif;
   font-style: normal;
@@ -100,6 +100,11 @@
   border: none;
 }
 
+.popup__btn-submit_disabled {
+  background-color: #E6E8EB;
+  color:#B6BCBF;
+}
+
 @media all and (max-width: 450px) {
   .popup__btn-submit {
     margin: 23px 16px 16px;
@@ -111,10 +116,10 @@
   color:#B6BCBF;
 }
 
-.popup__btn-submit:hover {
+/* .popup__btn-submit:hover {
   cursor: url(../../images/Pointer.svg), pointer;
   background-color: rgba(52, 126, 255, 1);
-}
+} */
 
 .popup__btn-submit:active {
   cursor: url(../../images/Pointer.svg), pointer;

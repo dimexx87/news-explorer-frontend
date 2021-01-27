@@ -1,20 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import { authorize } from '../../utils/auth';
+import { setToken } from '../../utils/token';
 
 function Login(props) {
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState(false);
+  const history = useHistory();
   const initialValues = {
     email: '',
     password: '',
   };
 
-  const onSubmit = (values) => {
-    const { email, password, name } = values;
-    props.onAddPlace({
-      email,
-      password,
-    });
+  const onSubmit = (values, onSubmitProps) => {
+    const { email, password } = values;
+    if (!email || !password) {
+      return;
+    }
+    authorize(email, password)
+      .then((data) => {
+        if (!data) {
+          setMessage('Проверьте адрес электронной почты и пароль');
+          setError(true);
+          onSubmitProps.setSubmitting(false);
+        }
+        if (data.token) {
+          setToken(data.token);
+          props.onLogged(true);
+          history.push('/');
+          onSubmitProps.setSubmitting(false);
+        }
+      })
+      // eslint-disable-next-line no-console
+      .catch((err) => console.log(err));
   };
 
   const validationSchema = Yup.object({
@@ -22,7 +43,7 @@ function Login(props) {
       .required('Необходимо заполнить')
       .email('Неправильный формат электронной почты')
       .min(2, 'Должно содержать минимум 2 символа')
-      .max(15, 'Должно содержать максимум 15 символов'),
+      .max(20, 'Должно содержать максимум 15 символов'),
     password: Yup.string()
       .required('Необходимо заполнить')
       .min(8, 'Должно содержать минимум 8 символов'),
@@ -34,18 +55,20 @@ function Login(props) {
     validationSchema,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     formik.values.email = '';
     formik.values.password = '';
     formik.touched.email = false;
     formik.touched.password = false;
-    formik.isValid = true;
-  // eslint-disable-next-line
+    formik.isValid = false;
   }, [props.isOpen]);
 
   return (
 
     <PopupWithForm
+      isOpen={props.isOpen}
+      isRegOpen={props.isRegOpen}
+      onRegister={props.onRegister}
       isOpen={props.isOpen}
       onClose={props.onClose}
       onSubmit={formik.handleSubmit}
@@ -53,7 +76,9 @@ function Login(props) {
       title={'Вход'}
       buttonText={'Войти'}
       spanText={'Зарегистрироваться'}
-      disabled={!formik.isValid}
+      disabled={!(formik.dirty && formik.isValid) || formik.isSubmitting}
+      error={error}
+      message={message}
     >
       {
         <>
